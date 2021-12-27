@@ -16,7 +16,7 @@ function App() {
         setPresupuestoValido={setPresupuestoValido}
       />
 
-      {presupuesto && (
+      {presupuestoValido && (
         <div className="nuevo-gasto">
           <img src={iconNuevoGasto} alt="icono nuevo gasto" />
         </div>
