@@ -30,24 +30,26 @@ const diccionarioiconos = {
 }
 
 
-const leadingActions = () => (
-    <LeadingActions>
-        <SwipeAction onClick={() => console.log('Editando...')}>
-            Editar
-        </SwipeAction>
-  </LeadingActions>
-)
 
-const trailingActions = () => (
-    <TrailingActions>
-      <SwipeAction onClick={() => console.log('Eliminando...')}>
-            Delete
-      </SwipeAction>
-    </TrailingActions>
-  );
-
-const Gasto = ({gasto}) => {
+const Gasto = ({gasto, setGastoEditar }) => {
     const { nombre, cantidad, categoria, id, fecha } = gasto;
+
+    const leadingActions = () => (
+        <LeadingActions>
+            <SwipeAction onClick={() => setGastoEditar(gasto)}>
+                Editar
+            </SwipeAction>
+      </LeadingActions>
+    )
+    
+    const trailingActions = () => (
+        <TrailingActions>
+          <SwipeAction onClick={() => console.log('Eliminando...')}>
+                Delete
+          </SwipeAction>
+        </TrailingActions>
+      );
+
     return (
         <SwipeableList>
             <SwipeableListItem

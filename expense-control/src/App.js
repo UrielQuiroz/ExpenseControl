@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header';
 import Modal from './components/Modal';
 import ListadoGastos from './components/ListadoGastos'
 import { generarId } from './helpers';
 import iconNuevoGasto from './img/nuevo-gasto.svg';
+import { object } from 'prop-types';
 
 function App() {
 
@@ -14,6 +15,14 @@ function App() {
   const [ animarModal, setAnimarModal ] = useState(false);
 
   const [ gastos, setGastos ] = useState([]);
+
+  const [ gastoEditar, setGastoEditar ] = useState({});
+
+  useEffect( () => {
+    if( Object.keys(gastoEditar).length > 0) {
+      handleNuevoGasto();
+    }
+  }, [gastoEditar])
 
   const handleNuevoGasto = () => {
     setModal(true);
@@ -51,7 +60,8 @@ function App() {
         <>
             <main>
                 <ListadoGastos
-                    gastos={gastos} />
+                    gastos={gastos}
+                    setGastoEditar={setGastoEditar} />
             </main>
             <div className="nuevo-gasto">
                 <img 
